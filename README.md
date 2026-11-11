@@ -1,28 +1,25 @@
 # Prajwal Lakshminath — Quantitative Finance Portfolio
 
-Responsive portfolio built with HTML, CSS and vanilla JavaScript. No build step.
+Responsive portfolio built with HTML, CSS and vanilla JavaScript.
 
 ## Files
-- `index.html`, `style.css`, `script.js` at the top level of the repository
+Keep `index.html`, `style.css`, `script.js` and the `assets` folder together:
 - `assets/prajwal-professional.jpeg` (portrait)
 - `assets/Prajwal_Lakshminath_Resume.pdf` (résumé download)
 
-## Editing links and project results
-Open `script.js`. The `SITE` settings at the very top control:
-- `linkedin` and `github` profile links
-- `projects.factor.code` / `projects.market.code`: links for the "View code on GitHub" buttons
-- `projects.factor.results` / `projects.market.results`: text for the Results section in each project's detail window
+## Settings
+The `SITE` block at the top of `script.js` holds:
+- the email address the contact form sends to
+- links for each project's "View code" button
+- text for each project's Results / Findings section
 
-Anything left as `''` stays hidden, so there are no broken links.
+Anything left as `''` stays hidden.
 
-## Features
-- Scrolling ticker of key figures, a candlestick chart and counting figures in the hero
-- Bright light theme by default, with an optional dark theme toggle
-- Project detail windows
-- Interactive mean-variance portfolio optimizer with an efficient frontier
-- Contact form that opens the visitor's email app (nothing is sent to a server)
+## Features added to the original template
+Scroll progress bar, back-to-top button with scroll percentage, market ticker, gradient headings,
+vertical quote beside the portrait, numbers that count up from 0, candlestick chart in the About banner,
+chart line-drawing animations, project reveal animations and 3D tilt, project detail windows,
+interactive portfolio optimizer, dark mode, active navigation highlight, LinkedIn links and link-preview tags.
 
-Charts in the hero and project cards are illustrative, and the optimizer uses made-up assumptions; none of them are market data or reported investment performance.
-
-## Run locally
-Open `index.html` in a browser, or run `python -m http.server 8000` in this folder.
+Charts are illustrative and the optimizer uses made-up assumptions; none of them are market data or
+reported investment performance. The contact form opens the visitor's email app and does not send data to a server.
