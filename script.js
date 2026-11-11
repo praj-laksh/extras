@@ -69,18 +69,14 @@ const SITE = {
     syncTheme();
   });
 
-  /* ---------- scroll progress bar + back-to-top ring ---------- */
+  /* ---------- scroll progress bar + back-to-top button ---------- */
   const bar = document.getElementById('scrollBar');
   const toTop = document.getElementById('toTop');
-  const ring = document.getElementById('ttRing');
-  const pctText = document.getElementById('ttPct');
   let ticking = false;
   const onScroll = () => {
     const max = document.documentElement.scrollHeight - window.innerHeight;
     const p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
     if (bar) bar.style.transform = `scaleX(${p})`;
-    if (ring) ring.style.strokeDashoffset = String(100 - p * 100);
-    if (pctText) pctText.textContent = Math.round(p * 100) + '%';
     if (toTop) toTop.classList.toggle('show', window.scrollY > 300);
     ticking = false;
   };

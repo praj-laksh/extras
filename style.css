@@ -20,20 +20,16 @@
 .grad-text-dark{background-image:var(--grad-dark)}
 .grad-text-light{background-image:var(--grad-light)}
 [hidden]{display:none!important}
-em.grad-text,em.grad-text-light{display:inline-block;padding:0 .12em .12em 0;margin:0 -.12em -.12em 0}
-.hero h1 .grad-text,.hero h1 .grad-text-dark{display:inline-block;padding:0 .04em .08em 0;margin-bottom:-.08em}
+em.grad-text,em.grad-text-light{display:inline-block;padding:0 .12em .22em 0;margin:0 -.12em -.22em 0}
+.hero h1 .grad-text,.hero h1 .grad-text-dark{display:inline-block;padding:0 .06em .24em 0;margin:0 -.06em -.24em 0}
 @keyframes gradShift{from{background-position:0% 50%}to{background-position:100% 50%}}
 
 /* ---------- scroll progress ---------- */
 .scroll-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:60;pointer-events:none}
 .scroll-progress span{display:block;height:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,#2a9eaa,#7a6ff0);box-shadow:0 0 10px rgba(42,158,170,.5)}
-.to-top{position:fixed;right:22px;bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:40;width:52px;height:52px;border-radius:50%;background:#fff;box-shadow:0 10px 30px rgba(20,45,50,.16);display:grid;place-items:center;opacity:0;transform:translateY(14px) scale(.9);pointer-events:none;transition:opacity .3s,transform .3s}
+.to-top{font-size:20px;font-weight:800;color:var(--teal-dark);position:fixed;right:22px;bottom:calc(22px + env(safe-area-inset-bottom,0px));z-index:40;width:52px;height:52px;border-radius:50%;background:#fff;box-shadow:0 10px 30px rgba(20,45,50,.16);display:grid;place-items:center;opacity:0;transform:translateY(14px) scale(.9);pointer-events:none;transition:opacity .3s,transform .3s}
 .to-top.show{opacity:1;transform:none;pointer-events:auto}
 .to-top:hover{transform:translateY(-3px)}
-.to-top svg{position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)}
-.tt-track{fill:none;stroke:#e7eeed;stroke-width:3}
-.tt-ring{fill:none;stroke:var(--teal);stroke-width:3;stroke-linecap:round;stroke-dasharray:100;stroke-dashoffset:100}
-.to-top span{position:relative;font-size:10px;font-weight:800;color:var(--teal-dark);letter-spacing:-.02em}
 
 /* ---------- ticker ---------- */
 .ticker{background:#142d3b;color:#c3d6d7;height:34px;overflow:hidden;font-size:9px;font-weight:700;letter-spacing:.12em}
@@ -80,7 +76,7 @@ em.grad-text,em.grad-text-light{display:inline-block;padding:0 .12em .12em 0;mar
 .symbol{display:inline-block;transition:transform .6s cubic-bezier(.3,1.4,.5,1)}
 .service-card:hover .symbol{transform:rotate(360deg) scale(1.25)}
 .service-card .chips span{transition:background .2s,color .2s}
-.service-card:hover .chips span{background:#e1f2f1;color:var(--teal-dark)}
+.service-card:hover .chips span{color:var(--teal-dark)}
 .social-panel a{transition:transform .25s,background .25s,color .25s}
 .social-panel a:hover{transform:translateY(-3px) rotate(-8deg);background:var(--teal);color:#fff}
 .social-panel a.in{font-weight:800;font-size:12px;font-family:Arial,sans-serif}
@@ -296,9 +292,7 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
 [data-theme="dark"] .contact-form,[data-theme="dark"] .dlg,[data-theme="dark"] .dlg-close{background:#15232a;color:var(--ink)}
 [data-theme="dark"] .contact-form input,[data-theme="dark"] .contact-form textarea{background:#0f1b21;border-color:#26383f;color:var(--ink)}
 [data-theme="dark"] .dlg p,[data-theme="dark"] .dlg li{color:#a5b3b6}
-[data-theme="dark"] .to-top{background:#15232a}
-[data-theme="dark"] .tt-track{stroke:#24363e}
-[data-theme="dark"] .to-top span{color:#7ed7d2}
+[data-theme="dark"] .to-top{background:#15232a;color:#7ed7d2}
 [data-theme="dark"] .vertical-quote,[data-theme="dark"] .ticker{background:#10232d}
 [data-theme="dark"] .vertical-quote::before{background:linear-gradient(#10232d,transparent)}
 [data-theme="dark"] .vertical-quote::after{background:linear-gradient(transparent,#10232d)}
@@ -312,3 +306,106 @@ input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;bac
   .ticker{overflow-x:auto}
   .ticker-list[aria-hidden="true"]{display:none}
 }
+
+
+/* =====================================================================
+   UPDATE 2: social panel, matching cards, matching projects, readability
+   ===================================================================== */
+
+/* --- social panel: icons in a row, animated "LET'S TALK" underneath --- */
+.social-panel{flex-direction:column;gap:9px;padding:14px 18px}
+.sp-icons{display:flex;gap:8px}
+.social-panel .lets-talk{display:flex;writing-mode:horizontal-tb;font-size:11px;font-weight:800;letter-spacing:.14em;color:var(--teal-dark)}
+.social-panel .lets-talk span{writing-mode:horizontal-tb;display:inline-block;font-size:11px;letter-spacing:.14em;color:var(--teal-dark);animation:talkWave 2.4s ease-in-out infinite;animation-delay:calc(var(--i) * .09s)}
+@keyframes talkWave{0%,60%,100%{transform:translateY(0);color:#187d89}30%{transform:translateY(-4px);color:#7a6ff0}}
+
+/* --- all skill and education cards share one gradient, inner chips bright white --- */
+.service-card,.service-card.accent-card,.education-card,.education-card.current{background:linear-gradient(150deg,#ffffff 0%,#d9f1ee 55%,#e3ddff 100%);border:1px solid #d3e8e6}
+.service-card .chips span,.education-card .chips span{background:#fff;color:#3c6f71;border:1px solid rgba(42,158,170,.16);box-shadow:0 1px 2px rgba(20,60,60,.04)}
+[data-theme="dark"] .service-card,[data-theme="dark"] .service-card.accent-card,[data-theme="dark"] .education-card,[data-theme="dark"] .education-card.current{background:linear-gradient(150deg,#15232a 0%,#14302f 55%,#1d2140 100%);border-color:#22343c}
+[data-theme="dark"] .service-card .chips span{background:#0f1b21;color:#a9d6d3;border-color:#26383f}
+
+/* --- both projects use the same design (white text side, dark chart side) --- */
+.project-feature+.project-feature{margin-top:14px}
+.mv-title{font-size:24px;line-height:1.2;letter-spacing:-.04em;margin:18px 0 0}
+.mv-title b{color:#7ed7d2}
+
+/* --- readable text sizes (headings unchanged) --- */
+.nav-links a,.nav-contact{font-size:11px}
+.availability,.eyebrow,.role{font-size:11px}
+.hero-copy{font-size:15px;line-height:1.85}
+.button{font-size:12px}
+.hero-meta{font-size:12px}
+.tiny-label{font-size:10px}
+.profile-info p{font-size:12px}
+.mini-stats span{font-size:11px}
+.mini-stats b{font-size:16px}
+.brand-panel small{font-size:10px}
+.interest-pills span{font-size:11px}
+.mission-foot{font-size:11px}
+.mission-about p{font-size:14px}
+.section-intro{font-size:13px;max-width:340px}
+.card-top{font-size:11px}
+.service-card p{font-size:13px;line-height:1.75}
+.chips span{font-size:11px;padding:6px 9px}
+.job-date{font-size:11px}
+.job-date span{font-size:10px}
+.job-content h4{font-size:13px}
+.job-content ul{font-size:14px;line-height:1.85}
+.visual-head,.visual-foot{font-size:10px}
+.factor-list small{font-size:10px}
+.project-label{font-size:10px}
+.project-lead{font-size:16px}
+.project-points b{font-size:11px}
+.project-points p{font-size:13px;line-height:1.75}
+.project-note{font-size:11px}
+.education-card small{font-size:11px}
+.status{font-size:10px}
+.education-card p{font-size:14px}
+.education-card>b{font-size:12px}
+.credential-list b{font-size:13px}
+.credential-list span{font-size:11px}
+.recognition-heading>p{font-size:13px;max-width:280px}
+.awards small{font-size:11px}
+.awards b{font-size:13px}
+.contact-copy{font-size:14px}
+.contact-details small{font-size:10px}
+.contact-details b{font-size:13px}
+.contact-details>a,.contact-details>div{grid-template-columns:80px 1fr 20px}
+.form-heading{font-size:13px}
+.form-heading span{font-size:10px}
+.contact-form label{font-size:12px}
+.contact-form input,.contact-form textarea{font-size:14px}
+.form-note{font-size:11px}
+.footer p,.footer-inner>a:last-child,.copyright{font-size:11px}
+.ticker{font-size:11px}
+.vq-track{font-size:10px}
+.lab-scale{font-size:11px}
+.lab-stats small{font-size:10px}
+.alloc-list li{font-size:13px}
+.lab-assumptions{font-size:12px}
+.lab-legend{font-size:11px}
+.dlg h4{font-size:11px}
+.dlg p,.dlg li{font-size:14px}
+
+/* phones: readable but not oversized */
+@media(max-width:700px){
+  .hero-copy{font-size:14px}
+  .section-intro,.service-card p,.project-points p,.recognition-heading>p,.contact-copy,.mission-about p{font-size:13px}
+  .job-content ul{font-size:13px}
+  .project-lead{font-size:15px}
+  .chips span{font-size:10px;padding:5px 8px}
+  .service-card .chips span{font-size:10px}
+  .contact-form input,.contact-form textarea{font-size:16px}
+  .awards b,.credential-list b{font-size:12px}
+  .mv-title{font-size:20px}
+  .dlg p,.dlg li{font-size:13px}
+  .nav-contact{font-size:10px}
+  .mission-foot{flex-wrap:wrap;gap:8px 12px;font-size:10px}
+  .mission-candles{opacity:.14}
+}
+@media(max-width:390px){
+  .service-card p{font-size:12.5px}
+}
+.social-panel a.lets-talk,.social-panel a.lets-talk:hover{width:auto;height:auto;background:none;border-radius:0;transform:none;display:flex;place-items:initial}
+[data-theme="dark"] .social-panel a.lets-talk{background:none}
